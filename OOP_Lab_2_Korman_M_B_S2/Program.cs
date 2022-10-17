@@ -167,7 +167,124 @@ namespace OOP_Lab_2_Korman_M_B_S2
                 case 2:
                     // Завдання 2
                     {
-                       
+                        int row = 3, col = 4;
+                        double[,] matrix = new double[row, col];
+
+                        matrix[0, 0] = 1; matrix[1, 0] = -3; matrix[2, 0] = 4;
+                        matrix[0, 1] = 2; matrix[1, 1] = 3;  matrix[2, 1] = 1;
+                        matrix[0, 2] = 4; matrix[1, 2] = 2;  matrix[2, 2] = 3;
+                        matrix[0, 3] = 0; matrix[1, 3] = -1; matrix[2, 3] = 0;
+
+                        Console.WriteLine("Бажаєте ввикорстовувати стандартні значення масиву чи ввести його?\n1 = Ввести його самотушки\t0 = Використовувати стандартні значення");
+                        int arr_cize = Convert.ToInt32(Console.ReadLine());
+                        if (arr_cize == 1)
+                        {
+                            Console.WriteLine("Вводьте масив розміру" + row + "на" + col);
+                            for (int i = 0; i < row; i++)
+                            {
+                                for (int j = 0; j < col; j++)
+                                {
+                                    matrix[i, j] = Convert.ToDouble(Console.ReadLine());
+                                }
+                            }
+                        }
+                        else 
+                        {
+                            Console.WriteLine("Використано масив станодартного розміру і значення");
+                        }
+
+                        //Метод Гауса 
+                        double[,] clone_matrix_gaus = new double[3, 4];
+
+                        for (int i = 0; i < row; i++)
+                        {
+                            for (int j = 0; j < col; j++)
+                            {
+                                clone_matrix_gaus[i, j] = matrix[i, j];
+                            }
+                        }
+
+                        double a1;
+                        double[] a = new double[2];
+
+                        a1 = 1 / clone_matrix_gaus[0, 0];
+                        a[0] = -clone_matrix_gaus[1, 0];
+                        a[1] = -clone_matrix_gaus[2, 0];
+
+                        for (int i = 0; i < 4; i++)
+                        {
+                            clone_matrix_gaus[0, i] = a1 * clone_matrix_gaus[0, i];
+                        }
+
+                        for (int j = 0; j < 2; j++)
+                        {
+                            for (int i = 0; i < 4; i++)
+                            {
+                                clone_matrix_gaus[j + 1, i] = clone_matrix_gaus[j + 1, i] + clone_matrix_gaus[0, i] * a[j];
+                            }
+                        }
+
+                        double b1;
+                        double[] b = new double[2];
+
+                        b1 = 1 / clone_matrix_gaus[1, 1];
+                        b[0] = -clone_matrix_gaus[0, 1];
+                        b[1] = -clone_matrix_gaus[2, 1];
+
+                        for (int i = 0; i < 4; i++)
+                        {
+                            clone_matrix_gaus[1, i] = b1 * clone_matrix_gaus[1, i];
+                        }
+
+                        for (int j = 0, l = 0; l < 2; j += 2, l++)
+                        {
+                            for (int i = 1; i < 4; i++)
+                            {
+                                clone_matrix_gaus[j, i] = clone_matrix_gaus[j, i] + clone_matrix_gaus[1, i] * b[l];
+                            }
+                        }
+
+                        Console.WriteLine("Задана матриця");
+
+                        for (int i = 0; i < row; i++)
+                        {
+                            for (int j = 0; j < col; j++)
+                            {
+                                Console.Write(matrix[i, j]);
+                                Console.Write('\t');
+                            }
+                            Console.Write('\n');
+                        }
+
+                        Console.WriteLine("Трикутна матриця");
+
+                        for (int i = 0; i < row; i++)
+                        {
+                            for (int j = 0; j < col; j++)
+                            {
+                                Console.Write(clone_matrix_gaus[i, j]);
+                                Console.Write('\t');
+                            }
+                            Console.Write('\n');
+                        }
+                        
+                        Console.WriteLine("Введіть значення за допомогою якого треба шукати кілкість радків менше заданої велечини");
+                        double row_size_help = Convert.ToDouble(Console.ReadLine());
+                        double row_size = 0;
+                        double row_count = 0;
+                        for (int i = 0; i < row; i++)
+                        {
+                            for (int j = 0; j < col; j++)
+                            {
+                                row_size += clone_matrix_gaus[i, j];
+                            }
+                            if (row_size < row_size_help)
+                            {
+                                row_count++;
+                            }
+                            row_size = 0;
+                        }
+                        Console.WriteLine("Кількість рядків менше заданої величини " + row_count);
                     }
                     break;
                 case 3:
