@@ -98,7 +98,7 @@ namespace OOP_Lab_2_Korman_M_B_S2
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Яке завдання бажаєте виконати?\nЗавдання 1?\nЗавдання 2?\nЗавдання 3?\nЗавдання 4?");
+            Console.WriteLine("Яке завдання бажаєте виконати?\nЗавдання 1?\nЗавдання 2?\nЗавдання 3?\n");
             int count = Convert.ToInt32(Console.ReadLine());
 
             switch (count)
@@ -335,12 +335,6 @@ namespace OOP_Lab_2_Korman_M_B_S2
                         str = Convert.ToString(Console.ReadLine());
                         Console.WriteLine("Кількість слів які закінчуються на голосну літеру: " + wrld_arr(str));
                         Console.WriteLine("Слова довжина яких менше 5-ти літер:" + cut_string(str));
-                    }
-                    break;
-                    //Завдання 4
-                case 4:
-                    {
-
                     }
                     break;
                 default:
