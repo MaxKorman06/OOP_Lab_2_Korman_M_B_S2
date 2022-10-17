@@ -4,6 +4,46 @@ namespace OOP_Lab_2_Korman_M_B_S2
 {
     class Program
     {
+        static int wrld_arr(string str)
+        {
+            int wrld = 0;
+            for (int i = 1; i < str.Length; i++)
+            {
+                if ((str[i - 1] == 'A' || str[i - 1] == 'a' || str[i - 1] == 'E' || str[i - 1] == 'e' || str[i - 1] == 'U' || str[i - 1] == 'u' || 
+                     str[i - 1] == 'I' || str[i - 1] == 'i' || str[i - 1] == 'O' || str[i - 1] == 'o' || str[i - 1] == 'У' || str[i - 1] == 'у' || 
+                     str[i - 1] == 'Е' || str[i - 1] == 'е' || str[i - 1] == 'І' || str[i - 1] == 'і' || str[i - 1] == 'А' || str[i - 1] == 'а' || 
+                     str[i - 1] == 'О' || str[i - 1] == 'о' || str[i - 1] == 'Є' || str[i - 1] == 'є' || str[i - 1] == 'Я' || str[i - 1] == 'я' || 
+                     str[i - 1] == 'Ю' || str[i - 1] == 'ю') && str[i] == ' ')
+                {
+                    ++wrld;
+                }
+            }
+            return wrld;
+        }
+        static string cut_string(string str)
+        {
+            String sim5_str = "";
+            String sim5_str_h = "";
+            int str_count = 0;
+            for (int i = 1; i < str.Length; i++)
+            {   
+                if (str_count > 5)
+                {
+                    sim5_str_h = "";
+                    str_count = 0;
+                }
+                if (str[i - 1] == ' ' && str_count <= 5 && str_count > 0)
+                {
+                    sim5_str += sim5_str_h;
+                    sim5_str_h = "";
+                    str_count = 0;
+                }
+                
+                sim5_str_h += str[i - 1];
+                str_count++;
+            }
+            return sim5_str;
+        }
         static void pushZerosToEnd(double[] arr)
         {
             int n = arr.Length;
@@ -58,7 +98,7 @@ namespace OOP_Lab_2_Korman_M_B_S2
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Яке завдання бажаєте виконати?\nЗавдання 1?\nЗавдання 2?\nЗавдання 3?");
+            Console.WriteLine("Яке завдання бажаєте виконати?\nЗавдання 1?\nЗавдання 2?\nЗавдання 3?\nЗавдання 4?");
             int count = Convert.ToInt32(Console.ReadLine());
 
             switch (count)
@@ -290,10 +330,14 @@ namespace OOP_Lab_2_Korman_M_B_S2
                 case 3:
                     //Завдання 3
                     {
-                      
+                        Console.WriteLine("Введіть текстовий рядок відповідно до умови");
+                        string str;
+                        str = Convert.ToString(Console.ReadLine());
+                        Console.WriteLine("Кількість слів які закінчуються на голосну літеру: " + wrld_arr(str));
+                        Console.WriteLine("Слова довжина яких менше 5-ти літер:" + cut_string(str));
                     }
                     break;
-                //Завдання 4
+                    //Завдання 4
                 case 4:
                     {
 
