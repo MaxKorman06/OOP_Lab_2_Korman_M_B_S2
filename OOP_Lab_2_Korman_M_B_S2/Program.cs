@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace OOP_Lab_2_Korman_M_B_S2
 {
@@ -99,7 +98,7 @@ namespace OOP_Lab_2_Korman_M_B_S2
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Яке завдання бажаєте виконати?\nЗавдання 1?\nЗавдання 2?\nЗавдання 3?\nЗавдання 4?");
+            Console.WriteLine("Яке завдання бажаєте виконати?\nЗавдання 1?\nЗавдання 2?\nЗавдання 3?\n");
             int count = Convert.ToInt32(Console.ReadLine());
 
             switch (count)
@@ -208,13 +207,7 @@ namespace OOP_Lab_2_Korman_M_B_S2
                 case 2:
                     // Завдання 2
                     {
-                        const int row = 3, col = 4;
-                        double[][] digits = new double[col][];
-                        digits[0] = new double[row] { 1, -3, 4 };
-                        digits[1] = new double[row] { 2, 3, 1 };
-                        digits[2] = new double[row] { 4, 2, 3 };
-                        digits[3] = new double[row] { 0, -1, 0, };
-                        
+                        int row = 3, col = 4;
                         double[,] matrix = new double[row, col];
 
                         matrix[0, 0] = 1; matrix[1, 0] = -3; matrix[2, 0] = 4;
@@ -342,65 +335,6 @@ namespace OOP_Lab_2_Korman_M_B_S2
                         str = Convert.ToString(Console.ReadLine());
                         Console.WriteLine("Кількість слів які закінчуються на голосну літеру: " + wrld_arr(str));
                         Console.WriteLine("Слова довжина яких менше 5-ти літер:" + cut_string(str));
-                    }
-                    break;
-                case 4:
-                    //Завдання 4
-                    {
-                        List<Tuple<string, int, string, double, double>> list = new List<Tuple<string, int, string, double, double>>
-                        {
-                             new Tuple<string, int, string, double, double>("Тернопіль", 1, "Чортків", 0.4, 88),
-                             new Tuple<string, int, string, double, double>("Тернопіль", 3, "Збараж", 0.6, 100),
-                             new Tuple<string, int, string, double, double>("Збараж", 2, "Тернопіль", 0.7, 110),
-                             new Tuple<string, int, string, double, double>("Увисла", 4, "Тернопіль", 0.5, 95)
-                        };
-                        //list.Sort(Comparer<Tuple<string, int, string, double, double>>.Default);
-
-                        int i = 0;
-                        while (i != 6)
-                        {
-                            Console.WriteLine("Сортування за місцем віправлення: 1\nСортування за номером автобуса: 2\nСортування за місцем призначення: 3\nСортування за змнністю автобусса: 4\nСортування за ціною проїзду: 5\nВихід: 6");
-                            i = Convert.ToInt32(Console.ReadLine());
-                            switch (i)
-                            {
-                                case 1:
-                                    {
-                                        list.Sort((x, y) => x.Item1.CompareTo(y.Item1));
-                                        list.ForEach(i => Console.Write("{0}\t", i));
-                                    }
-                                    break;
-                                case 2:
-                                    {
-                                        list.Sort((x, y) => x.Item2.CompareTo(y.Item2));
-                                        list.ForEach(i => Console.Write("{0}\t", i));
-                                    }
-                                    break;
-                                case 3:
-                                    {
-                                        list.Sort((x, y) => x.Item3.CompareTo(y.Item3));
-                                        list.ForEach(i => Console.Write("{0}\t", i));
-                                    }
-                                    break;
-                                case 4:
-                                    {
-                                        list.Sort((x, y) => x.Item4.CompareTo(y.Item4));
-                                        list.ForEach(i => Console.Write("{0}\t", i));
-                                    }
-                                    break;
-                                case 5:
-                                    {
-                                        list.Sort((x, y) => x.Item5.CompareTo(y.Item5));
-                                        list.ForEach(i => Console.Write("{0}\t", i));
-                                    }
-                                    break;
-                                case 6:
-                                    break;
-                                default:
-                                    Console.WriteLine("Невірне значення");
-                                    break;
-                            }
-                            Console.WriteLine('\n');
-                        }
                     }
                     break;
                 default:
